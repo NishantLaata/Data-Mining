@@ -1,0 +1,441 @@
+#Q 1) a number of questions, percentage of questions correctly asked --done
+import pandas as pd
+import os
+import glob
+import csv
+
+import pandas as pd;
+
+# Q1 = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\EdNet-Contents\contents\questions.csv')
+# df = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\KT4\u3.csv')
+path =  r"C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\HW1 CSV" 
+Q1 = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\EdNet-Contents\contents\questions.csv')
+csv_files = glob.glob(os.path.join(path, "*.csv"))
+
+header = ['User','Total Questions','Correct_answer','Wrong_ans','Percentage_Correct_Ans']
+
+with open(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\Q1a.csv', 'w', encoding='UTF8', newline='') as f:
+    writer = csv.writer(f)
+
+    # write the header
+    writer.writerow(header) 
+  
+
+# loop over the list of csv files
+    for f in csv_files:
+        Ques_count = 0;
+        Correct_ans = 0;
+        Wrong_ans = 0;
+        item_id = 0;
+        count = 0;
+      
+    # read the csv file
+        df = pd.read_csv(f)
+        for i in range(len(df)):
+            if(df.iloc[i][1] == 'respond'):
+                Ques_count += 1;
+   
+        
+
+#         Percentage of question answered correctly
+                item_id = df.iloc[i][2];
+           
+                for j in range(len(Q1)):
+                         if(Q1.iloc[j][0]==item_id):
+                                if(Q1.iloc[j][3]==df.iloc[i][5]):
+                                
+                                    Correct_ans += 1;
+                            
+                        
+                                elif(df.iloc[i][5] == None):
+                                    continue
+                                else:
+                                    
+                                    Wrong_ans += 1                                            
+
+        Percent_correct = (Correct_ans/Ques_count)*100
+        z = Percent_correct;
+        writer.writerow([str(os.path.basename(f)),str(Ques_count), str(Correct_ans),str(Wrong_ans),str(z)])
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Question 1(b) video watched and explanation read --done
+
+import pandas as pd
+import os
+import glob
+import csv
+
+# Q1 = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\EdNet-Contents\contents\questions.csv')
+# df = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\KT4\u3.csv')
+path =  r"C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\HW1 CSV2 having Big files" 
+Q1 = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\EdNet-Contents\contents\questions.csv')
+csv_files = glob.glob(os.path.join(path, "*.csv"))
+
+header = ['user','Lecture_Watched','Explanation_read']
+
+with open(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\Q1b.csv', 'w', encoding='UTF8', newline='') as f:
+    writer = csv.writer(f)
+
+    # write the header
+    writer.writerow(header) 
+    
+  
+# use glob to get all the csv files 
+# in the folder
+# path = os.getcwd()
+
+# loop over the list of csv files
+    for f in csv_files:
+        Lec_count = 0;  
+        Exp_count = 0;
+  
+    # read the csv file
+        df = pd.read_csv(f)
+        for i in range(len(df)):
+            if(df.iloc[i][2].startswith('l')):
+        
+                if(df.iloc[i][1] == 'quit'):
+                    
+                    Lec_count += 1;
+        for i in range(len(df)):
+    
+            if(df.iloc[i][2].startswith('e')):
+        
+                if(df.iloc[i][1] == 'quit'):
+                    
+                    Exp_count += 1;
+                    
+        writer.writerow([str(os.path.basename(f)),str(Lec_count), str(Exp_count)]) 
+        
+        
+------------------------------------------------------------------------------------------------------------------------------------------------
+        
+# Q1-c -- Adding three metrics to the user table
+import pandas as pd
+import os
+import glob
+import csv
+
+import pandas as pd;
+
+df = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\KT4\u3.csv')
+Q1 = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\EdNet-Contents\contents\questions.csv')
+
+
+  
+for i in range(len(df)):
+    if(df.iloc[i,1] == "quit"):
+        
+        df["Attentiveness"] = " yes "
+        df.to_csv("u3.csv", index=False);
+
+    else:
+        df["Attentiveness"] = " no "
+        df.to_csv("u3.csv", index=False);    
+        df.to_csv("u3.csv", index=False)
+        df["Grasping power"] = " Strong "
+        df.to_csv("u3.csv", index=False)
+        df["Previous Knowlege"] = " yes"
+        df.to_csv("u3.csv", index=False)
+        
+
+
+        import csv
+
+
+        with open("u3.csv") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                   print(" ".join(row))
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+# Q2 a and b)Question ID and Question type -- Done
+
+import pandas as pd
+import os
+import glob
+import csv  
+  
+# use glob to get all the csv files 
+# in the folder
+# path = os.getcwd()
+path =  r"C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\HW1 CSV" 
+csv_files = glob.glob(os.path.join(path, "*.csv"))
+Q1 = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\EdNet-Contents\contents\questions.csv')
+
+ 
+header = ['ID','Q_ID','Q_type']
+part = { 1:0 , 2:0, 3:0, 4:0, 5:0, 6:0, 7:0 };
+items_id = 0;
+part_id = 0;
+
+with open(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\Q2b.csv', 'w', encoding='UTF8', newline='') as f:
+    writer = csv.writer(f)
+
+    # write the header
+    writer.writerow(header)
+# loop over the list of csv files
+
+    for f in csv_files:
+#         items_id = 0;
+#         part_id = 0;
+
+      
+    # read the csv file
+        df = pd.read_csv(f)
+
+    # write multiple rows
+#     writer.writerows(data)
+    
+        for j in range(len(df)):
+    
+            for i in range(len(Q1)):
+                if(df.iloc[j][1] == 'respond'):
+                    items_id = df.iloc[j][2] 
+            
+                    if(items_id==Q1.iloc[i][0]):
+                        part_id = Q1.iloc[i][4] 
+            
+                        if(part_id <= 4):
+                            x = Q1.iloc[i][0];
+#                             y = str(i);
+                            
+#                         print(Q1.iloc[i][0])
+#                         print("listening Comprehension")
+                            writer.writerow([str(os.path.basename(f)),x,'Learning Comprehension'])
+    
+                    
+                        else :
+#                         print(Q1.iloc[i][0])
+#                         print("reading comprehension")
+                            x = Q1.iloc[i][0];
+                            y = str(i);                    
+                            writer.writerow([str(os.path.basename(f)),x,'Reading Comprehension'])
+
+    ------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+# Q2 c) --done
+
+import pandas as pd
+import os
+import glob
+import csv  
+  
+# use glob to get all the csv files 
+# in the folder
+# path = os.getcwd()
+path =  r"C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\HW1 CSV" 
+csv_files = glob.glob(os.path.join(path, "*.csv"))
+Q1 = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\EdNet-Contents\contents\questions.csv')
+
+ 
+header = ['User','Question_ID','Practiced']
+list = [];
+D = {item_id:count};
+
+
+with open(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\Q2c.csv', 'w', encoding='UTF8', newline='') as f:
+    writer = csv.writer(f)
+
+    # write the header
+    writer.writerow(header)
+    for f in csv_files:
+#         list = [];
+#         D = {item_id:count};
+
+        df = pd.read_csv(f)
+
+        for i in range(len(df)):
+            if(df.iloc[i][1] == 'respond'):
+        
+                item_id=df.iloc[i][2]
+                count = 0;
+           
+                if(item_id in list):
+                    continue;
+                else:
+                    j = i + 1;
+            
+                    for j in range(len(df)):
+                
+            
+                            if(df.iloc[i][1] == 'respond'):
+
+                        
+                                if(item_id == df.iloc[j][2]):
+                                    count += 1;
+
+                    D.update()
+                    list.append(item_id) 
+#                 print(item_id,count)
+                writer.writerow([str(os.path.basename(f)),str(item_id),str(count)])    
+        
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+# Q2d -- done
+import pandas as pd
+import os
+import glob
+import csv
+
+import pandas as pd;
+
+# Q1 = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\EdNet-Contents\contents\questions.csv')
+# df = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\KT4\u3.csv')
+path =  r"C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\HW1 CSV" 
+Q1 = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\EdNet-Contents\contents\questions.csv')
+csv_files = glob.glob(os.path.join(path, "*.csv"))
+
+header = ['User','Total Questions','Correct_answer','Wrong_ans']
+
+with open(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\Q-2d.csv', 'w', encoding='UTF8', newline='') as f:
+    writer = csv.writer(f)
+
+    # write the header
+    writer.writerow(header) 
+  
+
+# loop over the list of csv files
+    for f in csv_files:
+        Ques_count = 0;
+        Correct_ans = 0;
+        Wrong_ans = 0;
+        item_id = 0;
+        count = 0;
+      
+    # read the csv file
+        df = pd.read_csv(f)
+        for i in range(len(df)):
+            if(df.iloc[i][1] == 'respond'):
+                Ques_count += 1;
+   
+        
+
+#         Percentage of question answered correctly
+                item_id = df.iloc[i][2];
+           
+                for j in range(len(Q1)):
+                         if(Q1.iloc[j][0]==item_id):
+                                if(Q1.iloc[j][3]==df.iloc[i][5]):
+                                
+                                    Correct_ans += 1;
+                            
+                        
+                                elif(df.iloc[i][5] == None):
+                                    continue
+                                else:
+                                    
+                                    Wrong_ans += 1
+        writer.writerow([str(os.path.basename(f)),str(Ques_count), str(Correct_ans),str(Wrong_ans)])
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+ # Q3 -- done
+import pandas as pd
+import os
+import glob
+import csv
+
+import pandas as pd;
+
+# Q1 = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\EdNet-Contents\contents\questions.csv')
+# df = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\KT4\u3.csv')
+path =  r"C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\HW1 CSV" 
+Q1 = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\EdNet-Contents\contents\questions.csv')
+csv_files = glob.glob(os.path.join(path, "*.csv"))
+
+header = ['User','Total Questions','Correct_answer','Wrong_Answered','Accuracy']
+
+with open(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\Q-3.csv', 'w', encoding='UTF8', newline='') as f:
+    writer = csv.writer(f)
+
+    # write the header
+    writer.writerow(header) 
+  
+
+# loop over the list of csv files
+    for f in csv_files:
+        Ques_count = 0;
+        Correct_ans = 0;
+        Wrong_ans = 0;
+        item_id = 0;
+        count = 0;
+      
+    # read the csv file
+        df = pd.read_csv(f)
+        for i in range(len(df)):
+            if(df.iloc[i][1] == 'respond'):
+                Ques_count += 1;
+   
+        
+
+#         Percentage of question answered correctly
+                item_id = df.iloc[i][2];
+           
+                for j in range(len(Q1)):
+                         if(Q1.iloc[j][0]==item_id):
+                                if(Q1.iloc[j][3]==df.iloc[i][5]):
+                                
+                                    Correct_ans += 1;
+                            
+                        
+                                elif(df.iloc[i][5] == None):
+                                    Not_ans += 1;
+                                else:        
+                            
+                                    Wrong_ans += 1;
+        Accuracy = Correct_ans/Ques_count;                 
+        writer.writerow([str(os.path.basename(f)),str(Ques_count), str(Correct_ans),str(Wrong_ans),str(Accuracy)])
+                               
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Q4 -- done
+import pandas as pd
+import os
+import glob
+import csv
+
+import pandas as pd;
+
+# Q1 = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\EdNet-Contents\contents\questions.csv')
+# df = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\KT4\u3.csv')
+path =  r"C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\HW1 CSV" 
+csv_files = glob.glob(os.path.join(path, "*.csv"))
+
+header = ['User','times_played_audio','Question_answered']
+
+with open(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\Q-4.csv', 'w', encoding='UTF8', newline='') as f:
+    writer = csv.writer(f)
+
+    # write the header
+    writer.writerow(header) 
+    d={};
+
+# loop over the list of csv files
+    for f in csv_files:
+      
+    # read the csv file
+        df = pd.read_csv(f)
+        aud_count = 0;
+        vid_count = 0;
+        for i in range(len(df)):
+            if(df.iloc[i][1]=='play_audio'):
+                
+                aud_count += 1
+                
+            if(df.iloc[i][1]=='respond'):
+                ques_count += 1
+#         else:
+#             print("user is not attentive")
+   
+        print(os.path.basename(f))
+        d[os.path.basename(f)]=count
+#         values = d.values()
+#         average = (sum(values)/(len(d)))
+        writer.writerow([str(os.path.basename(f)),str(aud_count),str(ques_count)])
+                               
