@@ -112,6 +112,8 @@ with open(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\Q1b.csv', 'w', enc
 ------------------------------------------------------------------------------------------------------------------------------------------------
         
 # Q1-c -- Adding three metrics to the user table
+
+
 import pandas as pd
 import os
 import glob
@@ -119,35 +121,74 @@ import csv
 
 import pandas as pd;
 
-df = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\KT4\u3.csv')
+path =  r"C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\HW1 CSV" 
 Q1 = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\EdNet-Contents\contents\questions.csv')
+csv_files = glob.glob(os.path.join(path, "*.csv"))
 
+header = ['user','Active','Not Active','Attentive']
 
+with open(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\Q1cedited.csv', 'w', encoding='UTF8', newline='') as f:
+    writer = csv.writer(f)
+
+    # write the header
+    writer.writerow(header) 
   
-for i in range(len(df)):
-    if(df.iloc[i,1] == "quit"):
+
+# loop over the list of csv files
+    for f in csv_files:
+        active_count = 0;
+        not_active_count = 0;
+        Correct_ans = 0;
         
-        df["Attentiveness"] = " yes "
-        df.to_csv("u3.csv", index=False);
-
-    else:
-        df["Attentiveness"] = " no "
-        df.to_csv("u3.csv", index=False);    
-        df.to_csv("u3.csv", index=False)
-        df["Grasping power"] = " Strong "
-        df.to_csv("u3.csv", index=False)
-        df["Previous Knowlege"] = " yes"
-        df.to_csv("u3.csv", index=False)
+        df = pd.read_csv(f)  
+        for i in range(len(df)):
+                        
+            if(df.iloc[i][2].startswith('l')):
+                active_count += 1;
+            else:
+                not_active_count += 1;
+        print(active_count)
         
+        for i in range(len(df)):
+            if(df.iloc[i,1] == "quit"):
+        
+                df["Active"] = " yes "
+                df.to_csv("u3.csv", index=False);
+
+            else:
+                df["Active"] = ""
+                df.to_csv("u3.csv", index=False);    
+                df.to_csv("u3.csv", index=False)
+                df["Not active"] = ""
+                df.to_csv("u3.csv", index=False)
+                df["Attentive"] = ""
+                df.to_csv("u3.csv", index=False);
 
 
-        import csv
+                import csv
 
-
-        with open("u3.csv") as f:
-            reader = csv.reader(f)
-            for row in reader:
-                   print(" ".join(row))
+                with open("u3.csv") as f:
+                    reader = csv.reader(f)
+                    for row in reader:
+                           print(" ".join(row))
+                            
+                            
+                    for i in range(len(df)):
+                        
+                        if(df.iloc[i][2].startswith('e')):
+                            active_count += 1;
+                        else:
+                            not_active_count += 1;
+                            
+                    print(active_count)
+                    item_id = df.iloc[i][2];
+           
+                    for j in range(len(Q1)):
+                         if(Q1.iloc[j][0]==item_id):
+                                if(Q1.iloc[j][3]==df.iloc[i][5]):
+                                
+                                    Correct_ans += 1;
+                    print(Correct_ans)        
 
 -----------------------------------------------------------------------------------------------------------------------------------------
 
