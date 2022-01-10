@@ -1,5 +1,5 @@
 # Data-Mining
-Q1: 
+Task 1: 
 import numpy as np
 import pandas as pd
 from pandas_profiling import ProfileReport
@@ -89,7 +89,7 @@ if __name__ == '__main__':
     
     
     
-    # Q2 Logisitc regession
+# Task 2 Logisitc regession
 # Logistic regression
 #Importing required libraries
 import numpy as np
@@ -196,7 +196,7 @@ probs = model.fit(X_train, y_train).predict_proba(X_test)
 fpr, tpr, threshold = roc_curve(y_test, probs[:,1])
 print("Decision Tree Area under curve -> ",auc(fpr, tpr))
 
-# Q3 ROC random forest
+# Task 3 ROC random forest
 
 from sklearn.datasets import make_classification
 from sklearn import datasets
@@ -294,7 +294,7 @@ y_a = np.array(y_df)
 print(x_a)
 print(y_a)
 
-# Q2 One R
+# Task 4 One R
 import numpy as np
 
 
