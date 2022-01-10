@@ -1,11 +1,11 @@
-# Data-Mining HW3
+# Data-Mining 
 import pandas as pd;
 
 df = pd.read_csv(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 3\faithful.csv')
 
 #scatter plot Q1:
 ---------------------------------------------------
-Q1 a:
+Task 1 a:
 import pandas as pd
 from matplotlib import pyplot as plt
 plt.rcParams["figure.figsize"] = [7.00, 3.50]
@@ -27,7 +27,7 @@ from sklearn.decomposition import PCA
 
 ------------------------------------------------------------------
 
-#Q2a
+#Task 2a
 
 class KMeans:
     """K-Means Class"""
@@ -166,7 +166,7 @@ class KMeans:
     
 ------------------------------------------------------------------------------------------------
 
-Q2c:
+Task 2b:
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import random as rd
