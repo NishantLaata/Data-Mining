@@ -1,4 +1,4 @@
-#Q 1) a number of questions, percentage of questions correctly asked --done
+#Task 1(a): number of questions answere by an user, percentage of questions correctly answered by the user. 
 import pandas as pd
 import os
 import glob
@@ -59,7 +59,7 @@ with open(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\Q1a.csv', 'w', enc
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#Question 1(b) video watched and explanation read --done
+#Task 1(b): videos watched and explanations read by an user.
 
 import pandas as pd
 import os
@@ -111,7 +111,7 @@ with open(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\Q1b.csv', 'w', enc
         
 ------------------------------------------------------------------------------------------------------------------------------------------------
         
-# Q1-c -- Adding three metrics to the user table
+#Task 1(c) -- Adding three metrics to the user table
 
 
 import pandas as pd
@@ -192,7 +192,7 @@ with open(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\Q1cedited.csv', 'w
 
 -----------------------------------------------------------------------------------------------------------------------------------------
 
-# Q2 a and b)Question ID and Question type -- Done
+# Task 2(a and b)Exporting dtat into csv with the column names Question ID and Question type, describing the type of questions answered by an user.
 
 import pandas as pd
 import os
@@ -257,7 +257,7 @@ with open(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\Q2b.csv', 'w', enc
 
     ------------------------------------------------------------------------------------------------------------------------------------------------------
     
-# Q2 c) --done
+# Task 2(c) Number of questions answered correctly by an user and storing the result into dictionary.
 
 import pandas as pd
 import os
@@ -316,7 +316,7 @@ with open(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\Q2c.csv', 'w', enc
 ------------------------------------------------------------------------------------------------------------------------------------
 
 
-# Q2d -- done
+# Task 2(d) The percentage of questios answered correctly by an user.
 import pandas as pd
 import os
 import glob
@@ -376,7 +376,7 @@ with open(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\Q-2d.csv', 'w', en
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
- # Q3 -- done
+ # Task(3) finding the accuracy of the user. 
 import pandas as pd
 import os
 import glob
@@ -435,7 +435,7 @@ with open(r'C:\Users\W10\Desktop\is 733 dATAMINING\Homework 1\Q-3.csv', 'w', enc
                                
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# Q4 -- done
+# Task(4) exporting the user data into csv which describes different activities of the user.
 import pandas as pd
 import os
 import glob
